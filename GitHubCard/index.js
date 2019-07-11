@@ -60,7 +60,7 @@ const followersArray = [];
 /*
 creates and returns DOM node
 */
-function createUsers() {
+function createUsers(imageUrl) {
   //create the elements
   const card = document.createElement('div');
   const image = document.createElement('img')
@@ -88,6 +88,12 @@ function createUsers() {
   cardInfo.appendChild(bio)
 
   //set styles
+  card.classList.add('card')
+  cardInfo.classList.add('card-info')
+  name.classList.add('name')
+  userName.classList.add('username')
+
+  //set the content
 
 /*
 <div class="card">
