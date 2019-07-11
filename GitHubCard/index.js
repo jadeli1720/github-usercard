@@ -25,7 +25,16 @@
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = [
+ 'jadeli1720',
+ 'AlexisPanyathong',
+ 'ZacharyLasky',
+ 'Luis1D',
+ 'AdnanWebDev',
+ 'LandryIrakoze',
+ 'arvagas',
+ 'ElijahMcKay'
+];
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -59,19 +68,24 @@ const followersArray = [];
 
 const cards = document.querySelector('.cards')
 
+followersArray.forEach(username => {
 
-// //Reading the value of a promise, use .then():
-axios.get(`https://api.github.com/users/jadeli1720`)
-  .then(data => {
-    console.log('Profiles', data)
-    // const cards = document.querySelector('.cards')
-    const userCard =createUsers(data.data)
-    cards.appendChild(userCard)
+  // //Reading the value of a promise, use .then():
+axios.get(`https://api.github.com/users/${username}`)
+.then(data => {
+  console.log('Profiles', data)
+  // const cards = document.querySelector('.cards')
+  const userCard =createUsers(data.data)
+  cards.appendChild(userCard)
 
-  })
-  .catch(error => {
-    console.log('The API is currently down, try again later', error)
-  })
+})
+.catch(error => {
+  console.log('The API is currently down, try again later', error)
+})
+
+});
+
+
 
   // const newCard = createUsers('https://api.github.com/users/jadeli1720', 'jade')
   // cards.appendChild(newCard)
