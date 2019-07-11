@@ -57,10 +57,29 @@ const followersArray = [];
 
 // axios.get(`https://api.github.com/users/jadeli1720`)
 
+const cards = document.querySelector('.cards')
+
+
+// //Reading the value of a promise, use .then():
+axios.get(`https://api.github.com/users/jadeli1720`)
+  .then(data => {
+    console.log('Profiles', data)
+    // const cards = document.querySelector('.cards')
+    const userCard =createUsers(data.data)
+    cards.appendChild(userCard)
+
+  })
+  .catch(error => {
+    console.log('The API is currently down, try again later', error)
+  })
+
+  // const newCard = createUsers('https://api.github.com/users/jadeli1720', 'jade')
+  // cards.appendChild(newCard)
+
 /*
 creates and returns DOM node
 */
-function createUsers(imageUrl, user, usersName, local, github, followerCount, followingCount) {
+function createUsers(obj) {
   //create the elements
   const card = document.createElement('div');
   const image = document.createElement('img');
@@ -73,6 +92,7 @@ function createUsers(imageUrl, user, usersName, local, github, followerCount, fo
   const followers = document.createElement('p');
   const following = document.createElement('p');
   const bio = document.createElement('p');
+  console.log(profileLink)
 
   //put the elements together
   card.appendChild(image);
@@ -94,14 +114,17 @@ function createUsers(imageUrl, user, usersName, local, github, followerCount, fo
   userName.classList.add('username');
 
   //set the content
-  image.src = imageUrl;
-  name.textContent = user;
-  userName.textContent = usersName;
-  location.textContent = `Location: ${local}`;
-  profile.textContent = 'Profile:';
-  profileLink.href = github;
-  followers.textContent = followerCount;
-  following.textContent = followingCount;
+  image.src = obj.avatar_url;
+  name.textContent = obj.name;
+  userName.textContent = obj.login;
+  location.textContent = `Location: ${obj.location}`;
+  profile.textContent = `Profile: ${obj.html_url}`;
+  profileLink.href = obj.html_url;
+  // profileLink.textContent = obj.html_url;
+  followers.textContent = `Followers: ${obj.followers}`;
+  following.textContent = `Following: ${obj.followers}`;
+  bio.textContent = `Bio: ${obj.bio}`;
 
-  return card
+  return card;
 }
+
