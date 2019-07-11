@@ -2,6 +2,7 @@
            (replacing the placeholder with your Github name):
            https://api.github.com/users/<your name>
 */
+// axios.get(`https://api.github.com/users/jadeli1720`)
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
@@ -55,6 +56,10 @@ const followersArray = [];
 */
 
 // axios.get(`https://api.github.com/users/jadeli1720`)
+
+/*
+creates and returns DOM node
+*/
 function createUsers() {
   //create the elements
   const card = document.createElement('div');
@@ -70,4 +75,35 @@ function createUsers() {
   const bio = document.createElement('p')
 
   //put the elements together
+  card.appendChild(image);
+  card.appendChild(cardInfo)
+  cardInfo.appendChild(name)
+  cardInfo.appendChild(userName)
+  cardInfo.appendChild(location)
+  cardInfo.appendChild(profile)
+  profile.appendChild(profileLink)
+  cardInfo.appendChild(profile)
+  cardInfo.appendChild(followers)
+  cardInfo.appendChild(following)
+  cardInfo.appendChild(bio)
+
+  //set styles
+
+/*
+<div class="card">
+  <img src={image url of user} />
+  <div class="card-info">
+    <h3 class="name">{users name}</h3>
+    <p class="username">{users user name}</p>
+    <p>Location: {users location}</p>
+    <p>Profile:  
+      <a href={address to users github page}>{address to users github page}</a>
+    </p>
+    <p>Followers: {users followers count}</p>
+    <p>Following: {users following count}</p>
+    <p>Bio: {users bio}</p>
+  </div>
+</div>
+ */
+  return card
 }
