@@ -60,56 +60,48 @@ const followersArray = [];
 /*
 creates and returns DOM node
 */
-function createUsers(imageUrl) {
+function createUsers(imageUrl, user, usersName, local, github, followerCount, followingCount) {
   //create the elements
   const card = document.createElement('div');
-  const image = document.createElement('img')
-  const cardInfo = document.createElement('div')
-  const name = document.createElement('h3')
-  const userName = document.createElement('p')
-  const location = document.createElement('p')
-  const profile = document.createElement('p')
-  const profileLink = document.createElement('a')
-  const followers = document.createElement('p')
-  const following = document.createElement('p')
-  const bio = document.createElement('p')
+  const image = document.createElement('img');
+  const cardInfo = document.createElement('div');
+  const name = document.createElement('h3');
+  const userName = document.createElement('p');
+  const location = document.createElement('p');
+  const profile = document.createElement('p');
+  const profileLink = document.createElement('a');
+  const followers = document.createElement('p');
+  const following = document.createElement('p');
+  const bio = document.createElement('p');
 
   //put the elements together
   card.appendChild(image);
-  card.appendChild(cardInfo)
-  cardInfo.appendChild(name)
-  cardInfo.appendChild(userName)
-  cardInfo.appendChild(location)
-  cardInfo.appendChild(profile)
-  profile.appendChild(profileLink)
-  cardInfo.appendChild(profile)
-  cardInfo.appendChild(followers)
-  cardInfo.appendChild(following)
-  cardInfo.appendChild(bio)
+  card.appendChild(cardInfo);
+  cardInfo.appendChild(name);
+  cardInfo.appendChild(userName);
+  cardInfo.appendChild(location);
+  cardInfo.appendChild(profile);
+  profile.appendChild(profileLink);
+  cardInfo.appendChild(profile);
+  cardInfo.appendChild(followers);
+  cardInfo.appendChild(following);
+  cardInfo.appendChild(bio);
 
   //set styles
-  card.classList.add('card')
-  cardInfo.classList.add('card-info')
-  name.classList.add('name')
-  userName.classList.add('username')
+  card.classList.add('card');;
+  cardInfo.classList.add('card-info');
+  name.classList.add('name');
+  userName.classList.add('username');
 
   //set the content
+  image.src = imageUrl;
+  name.textContent = user;
+  userName.textContent = usersName;
+  location.textContent = `Location: ${local}`;
+  profile.textContent = 'Profile:';
+  profileLink.href = github;
+  followers.textContent = followerCount;
+  following.textContent = followingCount;
 
-/*
-<div class="card">
-  <img src={image url of user} />
-  <div class="card-info">
-    <h3 class="name">{users name}</h3>
-    <p class="username">{users user name}</p>
-    <p>Location: {users location}</p>
-    <p>Profile:  
-      <a href={address to users github page}>{address to users github page}</a>
-    </p>
-    <p>Followers: {users followers count}</p>
-    <p>Following: {users following count}</p>
-    <p>Bio: {users bio}</p>
-  </div>
-</div>
- */
   return card
 }
