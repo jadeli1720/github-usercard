@@ -1,5 +1,5 @@
 /* Step 1: using axios, send a GET request to the following URL 
-           (replacing the palceholder with your Github name):
+           (replacing the placeholder with your Github name):
            https://api.github.com/users/<your name>
 */
 
@@ -53,3 +53,21 @@ const followersArray = [];
   luishrd
   bigknell
 */
+
+// axios.get(`https://api.github.com/users/jadeli1720`)
+function createUsers() {
+  //create the elements
+  const card = document.createElement('div');
+  const image = document.createElement('img')
+  const cardInfo = document.createElement('div')
+  const name = document.createElement('h3')
+  const userName = document.createElement('p')
+  const location = document.createElement('p')
+  const profile = document.createElement('p')
+  const profileLink = document.createElement('a')
+  const followers = document.createElement('p')
+  const following = document.createElement('p')
+  const bio = document.createElement('p')
+
+  //put the elements together
+}
