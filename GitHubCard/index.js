@@ -27,13 +27,15 @@
 
 const followersArray = [
  'jadeli1720',
- 'AlexisPanyathong',
- 'ZacharyLasky',
+ 'dpayton23',
  'Luis1D',
+ 'ZacharyLasky',
  'AdnanWebDev',
- 'LandryIrakoze',
+ 'AlexisPanyathong',
  'arvagas',
- 'ElijahMcKay'
+ 'LandryIrakoze',
+ 'ElijahMcKay',
+ 'DeejayEaster'
 ];
 
 /* Step 3: Create a function that accepts a single object as its only argument,
@@ -108,6 +110,24 @@ function createUsers(obj) {
   const bio = document.createElement('p');
   console.log(profileLink)
 
+  //set styles
+  card.classList.add('card');;
+  cardInfo.classList.add('card-info');
+  name.classList.add('name');
+  userName.classList.add('username');
+
+  //set the content
+  image.src = obj.avatar_url;
+  name.textContent = obj.name;
+  userName.textContent = obj.login;
+  location.textContent = `Location: ${obj.location}`;
+  profile.textContent = `Profile:`;
+  profileLink.href = obj.html_url;
+  profileLink.textContent = obj.html_url;
+  followers.textContent = `Followers: ${obj.followers}`;
+  following.textContent = `Following: ${obj.followers}`;
+  bio.textContent = `Bio: ${obj.bio}`;
+
   //put the elements together
   card.appendChild(image);
   card.appendChild(cardInfo);
@@ -120,24 +140,6 @@ function createUsers(obj) {
   cardInfo.appendChild(followers);
   cardInfo.appendChild(following);
   cardInfo.appendChild(bio);
-
-  //set styles
-  card.classList.add('card');;
-  cardInfo.classList.add('card-info');
-  name.classList.add('name');
-  userName.classList.add('username');
-
-  //set the content
-  image.src = obj.avatar_url;
-  name.textContent = obj.name;
-  userName.textContent = obj.login;
-  location.textContent = `Location: ${obj.location}`;
-  profile.textContent = `Profile: ${obj.html_url}`;
-  profileLink.href = obj.html_url;
-  // profileLink.textContent = obj.html_url;
-  followers.textContent = `Followers: ${obj.followers}`;
-  following.textContent = `Following: ${obj.followers}`;
-  bio.textContent = `Bio: ${obj.bio}`;
 
   return card;
 }
