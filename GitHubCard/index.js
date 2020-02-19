@@ -1,7 +1,8 @@
 /* Step 1: using axios, send a GET request to the following URL 
-           (replacing the palceholder with your Github name):
+           (replacing the placeholder with your Github name):
            https://api.github.com/users/<your name>
 */
+// axios.get(`https://api.github.com/users/jadeli1720`)
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
@@ -24,7 +25,18 @@
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = [
+ 'jadeli1720',
+ 'dpayton23',
+ 'Luis1D',
+ 'ZacharyLasky',
+ 'AdnanWebDev',
+ 'AlexisPanyathong',
+ 'arvagas',
+ 'LandryIrakoze',
+ 'ElijahMcKay',
+ 'DeejayEaster'
+];
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -53,3 +65,82 @@ const followersArray = [];
   luishrd
   bigknell
 */
+
+// axios.get(`https://api.github.com/users/jadeli1720`)
+
+const cards = document.querySelector('.cards')
+
+followersArray.forEach(username => {
+
+  // //Reading the value of a promise, use .then():
+axios.get(`https://api.github.com/users/${username}`)
+.then(data => {
+  console.log('Profiles', data)
+  // const cards = document.querySelector('.cards')
+  const userCard =createUsers(data.data)
+  cards.appendChild(userCard)
+
+})
+.catch(error => {
+  console.log('The API is currently down, try again later', error)
+})
+
+});
+
+
+
+  // const newCard = createUsers('https://api.github.com/users/jadeli1720', 'jade')
+  // cards.appendChild(newCard)
+
+/*
+creates and returns DOM node
+*/
+function createUsers(obj) {
+  //create the elements
+  const card = document.createElement('div');
+  const image = document.createElement('img');
+  const cardInfo = document.createElement('div');
+  const name = document.createElement('h3');
+  const userName = document.createElement('p');
+  const location = document.createElement('p');
+  const profile = document.createElement('p');
+  const profileLink = document.createElement('a');
+  const followers = document.createElement('p');
+  const following = document.createElement('p');
+  const bio = document.createElement('p');
+  console.log(profileLink)
+
+  //set styles
+  card.classList.add('card');;
+  cardInfo.classList.add('card-info');
+  name.classList.add('name');
+  userName.classList.add('username');
+
+  //set the content
+  image.src = obj.avatar_url;
+  name.textContent = obj.name;
+  userName.textContent = obj.login;
+  location.textContent = `Location: ${obj.location}`;
+  profile.textContent = `Profile:`;
+  profileLink.href = obj.html_url;
+  profileLink.textContent = obj.html_url;
+  followers.textContent = `Followers: ${obj.followers}`;
+  following.textContent = `Following: ${obj.followers}`;
+  bio.textContent = `Bio: ${obj.bio}`;
+
+  //put the elements together
+  card.appendChild(image);
+  card.appendChild(cardInfo);
+  cardInfo.appendChild(name);
+  cardInfo.appendChild(userName);
+  cardInfo.appendChild(location);
+  cardInfo.appendChild(profile);
+  profile.appendChild(profileLink);
+  cardInfo.appendChild(profile);
+  cardInfo.appendChild(followers);
+  cardInfo.appendChild(following);
+  cardInfo.appendChild(bio);
+
+  return card;
+}
+
